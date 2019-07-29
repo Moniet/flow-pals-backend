@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :collaborators, only: [:create, :update, :destroy]
+  resources :collaborators, only: [:create, :destroy]
   resources :projects, only: [:create, :update, :destroy]
   resources :users, only: [:create]
 

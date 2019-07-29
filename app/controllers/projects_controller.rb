@@ -23,7 +23,7 @@ class ProjectsController < ApplicationController
 
     def destroy
         project = Project.find(update_destroy_params[:id])
-
+ 
         if project
             project.destroy
         else
