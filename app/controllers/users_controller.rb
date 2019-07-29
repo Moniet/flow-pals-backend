@@ -3,21 +3,21 @@ class UsersController < ApplicationController
 
     def profile
         hash = UserSerializer.new(current_user).serialized_json
-        render json: {user: hash}, status: :accepted 
+        render json: {user: hash}, status: :accepted
     end
 
     def create
         user = User.create(user_params)
-        if user.valid? 
+        if user.valid?
             hash = UserSerializer.new(user).serialized_json
             token = encode_token(user_id: user.id)
             render json: {user: hash, jwt: token}, status: :created
-        else 
+        else
             render json: {error: 'failed to create user'}, status: :not_acceptable
         end
-    end 
+    end
 
-    private 
+    private
 
     def user_params
         params.require(:user).permit(:name, :username, :password)
