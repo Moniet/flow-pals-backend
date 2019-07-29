@@ -7,4 +7,5 @@ class CollaboratorsController < ApplicationController
 
     def destroy
     end 
+
 end
