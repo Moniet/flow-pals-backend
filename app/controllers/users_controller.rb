@@ -1,9 +1,14 @@
 class UsersController < ApplicationController
     skip_before_action :authorized, only: [:create]
 
-    def profile
-        hash = UserSerializer.new(current_user).serialized_json
-        render json: {user: hash}, status: :accepted
+    def projects
+        projects = current_user.projects
+
+        if projects
+            render json: {projects: projects}
+        else
+            render json: { error: 'could not render projects'}
+        end
     end
 
     def create
