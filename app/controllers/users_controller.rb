@@ -7,8 +7,9 @@ class UsersController < ApplicationController
     end
 
     def create
+        ActionCable.server.broadcast('project_channel', "new user created")
         user = User.create(user_params)
-        if user.valid? 
+        if user 
             hash = UserSerializer.new(user).serialized_json
             token = encode_token(user_id: user.id)
             render json: {user: hash, jwt: token}, status: :created
