@@ -2,11 +2,14 @@ class UsersController < ApplicationController
     skip_before_action :authorized, only: [:create]
 
     def projects
+        # collaborator has user id
+        # user has id and name
         projects = current_user.projects
-        collaborators = projects.each { |p| p.collaborators.map { |c| User.find(c.user_id) } }
+        collaborators = projects.map { |p| p.collaborators }
+        users = collaborators.map {|hash| hash.map { |c| User.find(c.user_id).username } }
 
         if projects
-            render json: { projects: projects, collaborators: collaborators }
+            render json: { projects: projects, collaborators: users }
         else
             render json: { error: 'could not render projects'}
         end
