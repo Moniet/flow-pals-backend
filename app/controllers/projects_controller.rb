@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
             project.save
             ActionCable.server.broadcast('project_channel', project)
 
-            render json: { success: 'Project updated' }
+            render json: project
         else
             render json: { error: 'Project not updated | invalid id' }
         end
