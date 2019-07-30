@@ -14,6 +14,7 @@ class ProjectsController < ApplicationController
             project.content = update_destroy_params[:content]
             project.name = update_destroy_params[:name]
             project.save
+            ActionCable.server.broadcast('project_channel', project)
 
             render json: { success: 'Project updated' }
         else
