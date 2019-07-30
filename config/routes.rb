@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :collaborators, only: [:create, :destroy]
+  mount ActionCable.server => '/cable'
+
+  resources :collaborators, only: [:create, :update, :destroy]
   resources :projects, only: [:create, :update, :destroy]
   resources :users, only: [:create]
 
