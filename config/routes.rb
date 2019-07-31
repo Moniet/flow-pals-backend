@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :collaborators, only: [:create, :update, :destroy]
   resources :projects, only: [:create, :update, :destroy]
-  resources :users, only: [:create]
+  resources :users, only: [:index, :create]
 
   post '/signup', to: 'users#create'
   post '/login', to: 'auth#create'

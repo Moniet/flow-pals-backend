@@ -58,6 +58,8 @@ GEM
     concurrent-ruby (1.1.5)
     crass (1.0.4)
     erubi (1.8.0)
+    faker (2.0)
+      i18n (>= 0.7)
     fast_jsonapi (1.5)
       activesupport (>= 4.2)
     ffi (1.11.1)
@@ -149,6 +151,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
   byebug
+  faker
   fast_jsonapi
   jwt
   listen (>= 3.0.5, < 3.2)

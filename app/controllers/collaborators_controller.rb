@@ -23,6 +23,6 @@ class CollaboratorsController < ApplicationController
     end
 
     def create_collab_params
-        params.require(:collaborator).permit(:project_id)
+        params.require(:collaborator).permit(:username, :project_id)
     end
 end

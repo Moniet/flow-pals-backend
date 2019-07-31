@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
     skip_before_action :authorized, only: [:create]
 
+    def index
+        render json: User.all
+    end
+
     def projects
-        # collaborator has user id
-        # user has id and name
         projects = current_user.projects
         collaborators = projects.map { |p| p.collaborators }
         users = collaborators.map {|hash| hash.map { |c| User.find(c.user_id).username } }

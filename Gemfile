@@ -16,11 +16,13 @@ gem 'puma', '~> 3.11'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
- gem 'jwt'
+gem 'jwt'
 
- gem 'rack-cors'
+gem 'rack-cors'
 
 gem 'fast_jsonapi'
+
+gem 'faker'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
