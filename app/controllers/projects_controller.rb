@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
         project = Project.create(name: project_params[:name], content: project_params[:content])
         collab = Collaborator.create(user_id: current_user.id, project_id: project.id)
 
-        render json: { project_id: project.id }
+        render json: { project: project }
     end
 
     def update
@@ -24,15 +24,15 @@ class ProjectsController < ApplicationController
 
     def destroy
         project = Project.find(update_destroy_params[:id])
- 
+
         if project
             project.destroy
         else
             render json: { error: 'Project not deleted | invalid id' }
         end
-    end 
+    end
 
-    private 
+    private
 
     def project_params
         params.require(:project).permit(:name, :content)
