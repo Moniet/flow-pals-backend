@@ -4,6 +4,7 @@ class CollaboratorsController < ApplicationController
         collab.user = User.find(current_user.id)
         collab.project = Project.find(create_collab_params[:project_id].to_i)
         collab.save
+        ActionCable.server.broadcast('project_channel', collab)
     end
 
     def destroy
